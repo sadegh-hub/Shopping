@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Shapping.Models.Order>
+
+@{
+    ViewBag.Title = "Admin_Index";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h2>Admin_Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ispayed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Isdelivered)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ispayed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Isdelivered)
+        </td>
+        <td>
+          
+            @Html.ActionLink("Details", "Details", new { orderid=item.ID })           
+    </tr>
+}
+
+</table>

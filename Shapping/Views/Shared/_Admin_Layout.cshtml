@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- The sidebar -->
+<div class="sidebar">
+    <a class="@Url.Action("Index","Home")">Home</a>
+    <a href="@Url.Action("Index","SubgroupKalas")">Subgrups</a>
+    <a href="@Url.Action("Delete","ProductKalas")">Products</a>
+    <a href="@Url.Action("Index","GroupKalas")">Groups</a>
+    <a href="@Url.Action("Roles","Manage")">Roles</a>
+    <a href="@Url.Action("AddRoletoUser","Manage")">Add Role to User</a>
+    <a href="@Url.Action("Admin_Index","Order")">Orders</a>
+
+
+</div>
+
+<!-- Page content -->
+<div class="content">
+  @RenderBody()
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)

@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- The sidebar -->
+<div class="sidebar">
+    <a class="@Url.Action("Index","Home")">صفحه مدیریت کاربر</a>
+    <a href="@Url.Action("Details","ProfileViewModels")">اطلاعات کاربری</a>
+   
+    <a href="@Url.Action("Index","Order")">سفارش های من</a>
+    
+
+
+</div>
+
+<!-- Page content -->
+<div class="content">
+    @RenderBody()
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)

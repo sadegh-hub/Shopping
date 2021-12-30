@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<hr />
+<hr />
+<div class="row">
+    <div class="col-sm-6"> </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-xs-10 col-sm-10 new-product-title">
+        <h1>جدیدترین محصولات</h1>
+    </div>
+</div>
+
+
+
+<div class="row">
+    @foreach (var item in ViewBag.product as ICollection<Shapping.Models.Productkala>)
+    {
+        <div class="box col-sm-3">
+            <div class=" front">
+                <img src=@item.Image alt=@item.Name>
+            </div>
+            <div class="back">
+                <h5 dir="rtl">@item.Name</h5>
+                <h6 dir="rtl">@item.Discription</h6>
+                <p dir="rtl">@item.Price تومان</p>
+                <a href="@Url.Action("Details","Productkalas",new {Groupkalas=item.Subgroupkala.IDGroup,Subgroupkalas=item.IDSubGroup,item.ID,productname=item.Name.Replace(" ","-") })" class="Product-link btn btn-warning">جزییات</a>
+            </div>
+
+        </div>
+
+    }
+</div>   
+
+ 

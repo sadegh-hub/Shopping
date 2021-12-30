@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Shapping.Models.ShappingcartViewModels>
+
+@{
+    ViewBag.Title = "shappingcart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 dir="rtl">سبد خرید</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quntity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        <a href="@Url.Action("increasequntity","ProductKalas",new {pid=item.product.ID })"> + </a>
+        @Html.DisplayFor(modelItem => item.Quntity)
+        <a href="@Url.Action("decreasequntity","ProductKalas",new {pid=item.product.ID })"> - </a>
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.product.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.product.Price)
+    </td>
+    <td>
+    
+        <img src="@item.product.Image" alt="@item.product.Name" style="width:80px;"/>
+    </td>
+
+    <td>
+        <button class="btn btn-default dropdown-item subgroupitem"> @Html.ActionLink("حذف از سبد خرید", "DeleteFormCart", "ProductKalas", new { pid = item.product.ID }, null) <img src="~/image/trash-alt-solid.svg" alt="!" style="width:18px;" /> </button>
+
+       
+
+    </td>
+</tr>
+}
+
+</table>
+<div class="row" dir="rtl">
+    <div class="col-sm-12">
+        <label dir="rtl">مبلغ قابل پرداخت: @ViewBag.totalprice</label>
+    </div>
+</div>
+<div class="row" dir="rtl">
+    <div class="col-sm-12">
+        <br />  
+        <form method="get" action="~/productKalas/submit_order">
+            <label>پرداخت انلاین</label>
+            <input type="radio" value="Online" name="payment_method" />
+            <br />
+            <label>پرداخت درب منزل</label>
+            <input type="radio" value="Cash" name="payment_method" />
+            <input type="submit" value="ثبت نهایی خرید" class="dropdown-item subgroupitem submit-shappingcart" />
+        </form>
+       
+        
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="label-danger">@ViewBag.status</label>
+    </div>
+</div>

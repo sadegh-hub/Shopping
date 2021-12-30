@@ -1,0 +1,34 @@
+﻿@model Shapping.Models.Productkala
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<hr />
+    <h3>جزییات محصول</h3>
+
+
+<div class="row ">
+    <div class="col-sm-12">
+        <div class="row" dir="rtl">
+            <div class="col-sm-6 div-details">
+                <h2>@Model.Name</h2>
+                <br />
+                <label>@Model.Discription</label>
+                <br />
+                <label dir="rtl">@Model.Price تومان</label>
+                <br />  
+                <button class="btn btn label-success  dropdown-item subgroupitem"> <a href="@Url.Action("AddToCart","ProductKalas", new {pid=Model.ID })" class="text-info" style="text-decoration:none;">اضافه کردن به سبد خرید <img src="~/image/shopping-cart-solid.svg" alt="!" style="width:18px; color:brown;" /></a>   </button>
+                
+                
+
+            </div>
+            <div class="col-sm-6">
+                <img src="@Model.Image" alt="@Model.Name" class="img-responsive img-rounded"  />
+            </div>
+      
+        </div>
+    </div>
+</div>

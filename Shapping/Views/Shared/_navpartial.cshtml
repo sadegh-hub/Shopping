@@ -1,0 +1,27 @@
+﻿
+@model IEnumerable<Shapping.Models.Subgroupkala>
+
+
+<ul class="nav navbar-nav">
+
+    @foreach (var item in (ViewBag.Groupkalas as ICollection<Shapping.Models.Groupkala>))
+    {
+
+        <li class="nav-item dropdown nva-show">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @item.Name
+            </a>
+            <div class="dropdown-menu nav-css" aria-labelledby="navbarDropdown">
+                @foreach (var subitem in Model.Where(x => x.IDGroup == item.ID))
+                {
+                    <h4> <a class="dropdown-item subgroupitem" href="@Url.Action("Index","Productkalas",new { Groupkalas = item.ID , Subgroupkalas = subitem.ID})">@subitem.Name</a></h4>
+                    <br />
+                }
+
+            </div>
+        </li>
+
+    }
+
+
+</ul>
